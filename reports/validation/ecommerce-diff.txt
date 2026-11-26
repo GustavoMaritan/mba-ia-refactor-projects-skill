@@ -1,0 +1,10 @@
+DIFERENTE  GET /api/admin/financial-report
+   antes : [{"course": "Clean Architecture", "revenue": 997, "students": [{"student": "Leonan", "paid": 997}]}, {"course": "Docker", "revenue": 994, "students": [{"student": "Leonan", "paid": 497}, {"student": "Guilherme", "paid": 497}]}]
+   depois: [{"course": "Clean Architecture", "revenue": 997, "students": [{"student": "Leonan", "paid": 997}]}, {"course": "Docker", "revenue": 994, "students": [{"student": "Guilherme", "paid": 497}, {"student": "Leonan", "paid": 497}]}]
+DIFERENTE  DELETE /api/users/1
+   antes : "Usuário deletado, mas as matrículas e pagamentos ficaram sujos no banco."
+   depois: "Usuário deletado."
+DIFERENTE  GET /api/admin/financial-report
+   antes : [{"course": "Clean Architecture", "revenue": 997, "students": [{"student": "Unknown", "paid": 997}]}, {"course": "Docker", "revenue": 994, "students": [{"student": "Guilherme", "paid": 497}, {"student": "Unknown", "paid": 497}]}]
+   depois: [{"course": "Clean Architecture", "revenue": 0, "students": []}, {"course": "Docker", "revenue": 497, "students": [{"student": "Guilherme", "paid": 497}]}]
+-- 5/8 respostas idênticas

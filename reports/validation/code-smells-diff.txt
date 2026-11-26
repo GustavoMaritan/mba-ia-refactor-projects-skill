@@ -1,0 +1,20 @@
+DIFERENTE  GET /health
+   antes : {"ambiente": "producao", "counts": {"pedidos": 0, "produtos": 10, "usuarios": 3}, "database": "connected", "db_path": "loja.db", "debug": true, "secret_key": "minha-chave-super-secreta-123", "status": "ok", "versao": "1.0.0"}
+   depois: {"ambiente": "producao", "counts": {"pedidos": 0, "produtos": 10, "usuarios": 3}, "database": "connected", "db_path": "loja.db", "debug": false, "status": "ok", "versao": "1.0.0"}
+DIFERENTE  GET /usuarios
+   antes : {"dados": [{"criado_em": "<ts>", "email": "admin@loja.com", "id": 1, "nome": "Admin", "senha": "admin123", "tipo": "admin"}, {"criado_em": "<ts>", "email": "joao@email.com", "id": 2, "nome": "João Silva", "senha": "123456", "tipo": "cliente"}, {"criado_em": "<ts>", "email": "maria@email.com", "id": 
+   depois: {"dados": [{"criado_em": "<ts>", "email": "admin@loja.com", "id": 1, "nome": "Admin", "tipo": "admin"}, {"criado_em": "<ts>", "email": "joao@email.com", "id": 2, "nome": "João Silva", "tipo": "cliente"}, {"criado_em": "<ts>", "email": "maria@email.com", "id": 3, "nome": "Maria Santos", "tipo": "clie
+DIFERENTE  GET /usuarios/1
+   antes : {"dados": {"criado_em": "<ts>", "email": "admin@loja.com", "id": 1, "nome": "Admin", "senha": "admin123", "tipo": "admin"}, "sucesso": true}
+   depois: {"dados": {"criado_em": "<ts>", "email": "admin@loja.com", "id": 1, "nome": "Admin", "tipo": "admin"}, "sucesso": true}
+DIFERENTE  POST /login
+   status: 200 -> 401
+   antes : {"dados": {"email": "admin@loja.com", "id": 1, "nome": "Admin", "tipo": "admin"}, "mensagem": "Login OK", "sucesso": true}
+   depois: {"erro": "Email ou senha inválidos", "sucesso": false}
+DIFERENTE  GET /produtos/busca?q=%27%20OR%20%271%27%3D%271
+   antes : {"dados": [{"ativo": 1, "categoria": "informatica", "criado_em": "<ts>", "descricao": "Notebook potente para jogos", "estoque": 9, "id": 1, "nome": "Notebook Gamer", "preco": 5999.99}, {"ativo": 1, "categoria": "informatica", "criado_em": "<ts>", "descricao": "Mouse sem fio ergonômico", "estoque": 4
+   depois: {"dados": [], "sucesso": true, "total": 0}
+DIFERENTE  GET /health
+   antes : {"ambiente": "producao", "counts": {"pedidos": 0, "produtos": 0, "usuarios": 0}, "database": "connected", "db_path": "loja.db", "debug": true, "secret_key": "minha-chave-super-secreta-123", "status": "ok", "versao": "1.0.0"}
+   depois: {"ambiente": "producao", "counts": {"pedidos": 0, "produtos": 0, "usuarios": 0}, "database": "connected", "db_path": "loja.db", "debug": false, "status": "ok", "versao": "1.0.0"}
+-- 35/41 respostas idênticas
