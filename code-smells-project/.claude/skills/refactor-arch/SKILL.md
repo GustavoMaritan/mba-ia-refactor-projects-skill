@@ -70,14 +70,15 @@ Siga direto para a Fase 2.
    - severidade do catálogo (ajuste só com justificativa explícita no texto);
    - `arquivo:linha` ou `arquivo:inicio-fim` **exatos** — releia o trecho antes de escrever o número;
    - descrição do que está no código (cite o trecho curto), impacto e recomendação apontando a transformação do playbook.
-4. Agrupe ocorrências iguais do mesmo anti-pattern em um finding com várias linhas (ex.: SQL injection em 12 funções = 1 finding listando as linhas), mas mantenha anti-patterns diferentes separados.
+4. Agrupe ocorrências iguais do mesmo anti-pattern em um finding com várias linhas (ex.: SQL injection em 12 funções = 1 finding listando as linhas), mas mantenha anti-patterns diferentes separados. **Todo finding tem bloco completo** (File, Evidence, Description, Impact, Recommendation), inclusive os LOW — não resuma vários findings num bloco só.
 5. Verifique explicitamente o uso de **APIs deprecated** (seção própria do catálogo) na versão de linguagem/framework detectada. Se não houver, diga isso no relatório.
 6. Ordene os findings: CRITICAL → HIGH → MEDIUM → LOW.
 7. Monte o relatório seguindo o template e imprima-o.
 8. Salve o relatório em Markdown:
    - no caminho passado em `--report <caminho>`, se houver;
    - senão em `reports/audit-<nome-do-projeto>.md` na raiz do repositório (crie a pasta se preciso).
-   Este é o **único** arquivo que pode ser escrito antes da confirmação.
+   O arquivo começa com o bloco da Fase 1 e segue com o relatório completo (o mesmo texto impresso).
+   Este é o **único** arquivo que pode ser escrito antes da confirmação. Se a escrita for negada, imprima o relatório e siga para a pergunta, sem tentar outro caminho.
 9. Termine a fase com a pergunta, exatamente:
 
 ```
