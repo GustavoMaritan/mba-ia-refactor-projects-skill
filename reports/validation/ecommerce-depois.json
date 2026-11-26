@@ -1,0 +1,89 @@
+[
+ {
+  "req": "POST /api/checkout",
+  "status": 200,
+  "body": {
+   "msg": "Sucesso",
+   "enrollment_id": 2
+  }
+ },
+ {
+  "req": "POST /api/checkout",
+  "status": 400,
+  "body": "Pagamento recusado"
+ },
+ {
+  "req": "POST /api/checkout",
+  "status": 400,
+  "body": "Bad Request"
+ },
+ {
+  "req": "POST /api/checkout",
+  "status": 404,
+  "body": "Curso não encontrado"
+ },
+ {
+  "req": "POST /api/checkout",
+  "status": 200,
+  "body": {
+   "msg": "Sucesso",
+   "enrollment_id": 3
+  }
+ },
+ {
+  "req": "GET /api/admin/financial-report",
+  "status": 200,
+  "body": [
+   {
+    "course": "Clean Architecture",
+    "revenue": 997,
+    "students": [
+     {
+      "student": "Leonan",
+      "paid": 997
+     }
+    ]
+   },
+   {
+    "course": "Docker",
+    "revenue": 994,
+    "students": [
+     {
+      "student": "Guilherme",
+      "paid": 497
+     },
+     {
+      "student": "Leonan",
+      "paid": 497
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "req": "DELETE /api/users/1",
+  "status": 200,
+  "body": "Usuário deletado."
+ },
+ {
+  "req": "GET /api/admin/financial-report",
+  "status": 200,
+  "body": [
+   {
+    "course": "Clean Architecture",
+    "revenue": 0,
+    "students": []
+   },
+   {
+    "course": "Docker",
+    "revenue": 497,
+    "students": [
+     {
+      "student": "Guilherme",
+      "paid": 497
+     }
+    ]
+   }
+  ]
+ }
+]
