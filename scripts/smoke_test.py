@@ -70,9 +70,9 @@ SCENARIOS = {
         ("POST", "/api/checkout", {}),
         ("POST", "/api/checkout", {"usr": "Ana", "eml": "ana@teste.com", "pwd": "x", "c_id": 99, "card": "4111222233334444"}),
         ("POST", "/api/checkout", {"usr": "Leonan", "eml": "leonan@fullcycle.com.br", "c_id": 2, "card": "4000111122223333"}),
-        ("GET", "/api/admin/financial-report", None),
-        ("DELETE", "/api/users/1", None),
-        ("GET", "/api/admin/financial-report", None),
+        ("GET", "/api/admin/financial-report", None, ADMIN_HEADERS),
+        ("DELETE", "/api/users/1", None, ADMIN_HEADERS),
+        ("GET", "/api/admin/financial-report", None, ADMIN_HEADERS),
     ],
     "task-manager": [
         ("GET", "/", None),
